@@ -1,0 +1,22 @@
+---
+- name: create users and clone a remote git repo into the users home directory
+  hosts: all
+  tasks: 
+    - name: create user
+      user: 
+        name: shankar
+        password: 1234
+        uid: 8989
+        comment: "a super user"
+        home: /tmp/shankar
+        shell: /bin/bash
+    - name: clone git repository
+      git:
+        repo: https://github.com/gannavaramanvesh-netizen/mymaven.git
+        dest: /tmp/shankar/mygit
+    - name: delete pom.xml file from the clone repo
+      file:
+        name: /tmp/shankar/mygit/pom.xml
+        state: absent
+...
+

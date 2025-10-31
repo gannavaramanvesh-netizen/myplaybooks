@@ -1,0 +1,35 @@
+---
+- name: Install tomcat10 and tomcat10-admin into all the servers
+  hosts: all
+  tasks:
+    - name: install tomcat10
+      apt: 
+       name: tomcat10
+       state: present
+       update_cache: yes
+    - name: install tomcat10-admin
+      apt: 
+       name: tomcat10-admin
+       state: present
+    - name: copy customized tomcat-user.xml file into all servers
+      copy:
+        src: tomcat-user.xml
+        dest: /etc/tomcat10
+    - name: change port
+      replace: 
+        regexp: 8080
+        replace: 9090
+        path: /etc/tomcat10/server.xml
+    - name: restart
+      service:
+        name: tomcat10
+        state: restarted
+    - name: pause for 1 minute
+      pause: 
+       minutes: 1
+    - name: check tomcat is responding or not
+      uri:
+        url: "http://172.31.29.245:9090"
+        status_code: 200
+...
+

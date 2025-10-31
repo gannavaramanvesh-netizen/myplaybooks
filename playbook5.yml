@@ -1,0 +1,16 @@
+---
+- name: create a directory into all the servers and download jenkins.war file
+  hosts: all
+  tasks:
+    - name: create directory
+      file:
+        name: /tmp/dir1
+        state: directory
+        owner: chintu
+        group: root
+        mode: 750
+    - name: download jenkins.war file
+      get_url:
+        url: https://get.jenkins.io/war-stable/2.528.1/jenkins.war
+        dest: /tmp/dir1
+...

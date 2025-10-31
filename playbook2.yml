@@ -1,0 +1,12 @@
+---
+- name: copy file in all servers
+  hosts: all
+  tasks:
+    - name: copy file
+      copy:
+        src: /etc/passwd
+        dest: /tmp
+        owner: chintu
+        group: chintu
+        mode: 750
+...

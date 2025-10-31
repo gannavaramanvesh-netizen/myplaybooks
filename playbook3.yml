@@ -1,0 +1,9 @@
+---
+- name: download git repository into all the servers
+  hosts: all
+  tasks:
+   - name: git url download
+     git:
+       repo: https://github.com/gannavaramanvesh-netizen/mymaven.git
+       dest: /tmp/mygit
+...
