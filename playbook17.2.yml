@@ -1,0 +1,15 @@
+---
+- name: install various softwares apps into all the servers
+  hosts: all
+  tasks:
+    - name: install multiple softwares
+      apt:
+       name: "{{item}}"
+       state: absent
+       update_cache: yes
+      with_items:
+        - openjdk-17-jdk
+        - maven
+        - git
+...
+

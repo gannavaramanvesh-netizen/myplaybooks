@@ -1,0 +1,20 @@
+---
+- name: install various softwares apps into all the servers
+  hosts: all
+  tasks: 
+    - name: install java
+      apt: 
+       name: openjdk-17-jdk
+       state: present
+       update_cacahe: yes
+    - name: maven
+      apt:
+        name: maven
+        state: present
+        update_cacahe: yes
+    - name: install git
+      apt:
+        name: git
+        state: present
+        update_cacahe: yes
+...

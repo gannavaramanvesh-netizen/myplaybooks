@@ -1,0 +1,21 @@
+---
+- name: i want to create users and copy files into users home directoty
+  hosts: all
+  tasks: 
+    - name: create multiple user
+      user: 
+       name: "{{item.a}}"
+       password: "{{item.b}}"
+       home: "{{item.c}}"
+      with_items:
+         - {a: ramu,b: 667,c: /home/ramu}
+         - {a: ravi,b: 557,c: /tmp/ravi}
+    - name: copy files
+      copy:
+        src: "{{item.a}}"
+        dest: "{{item.b}}"
+      with_items:
+        - {a: /etc/passwd,b: /home/ramu}
+        - {a: /etc/group,b: /tmp/ravi}
+...
+

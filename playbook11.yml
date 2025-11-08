@@ -1,0 +1,17 @@
+---
+- name: create users and create files/dir in user home dir
+  hosts: all
+  tasks: 
+   - name: create user
+     user:
+      name: ravi
+      password: 4456
+      uid: 9987
+      home: /tmp/ravi
+   - name: create file/dir
+     file: 
+      name: /tmp/ravi
+      state: touch
+...        
+
+

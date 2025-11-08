@@ -1,0 +1,9 @@
+---
+- name: copy password file by using host scope variables
+  hosts: webserver
+  tasks:  
+     - name: copy passwd file 
+       copy: 
+        src: "{{d}}"
+        dest: "{{e}}"
+...
