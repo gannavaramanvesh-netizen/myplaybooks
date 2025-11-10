@@ -1,0 +1,10 @@
+---
+- name: crete users on all the servers
+  hosts: all
+  tasks: 
+    - name: create user
+      user:
+        name: vikky
+        password: 667
+        comment: "a good"
+...

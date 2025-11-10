@@ -2,4 +2,6 @@
 a: firewalld
 b: present
 c: yes
-
+d: /etc/passwd
+e: /tmp
+...

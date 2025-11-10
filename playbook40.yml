@@ -1,0 +1,13 @@
+---
+- name: implementing loop for installing softwares
+  hosts: all
+  tasks:
+    - name: install maven git jdk
+      apt:
+        name: "{{item.a}}"
+        state: "{{item.b}}"
+        update_cache: "{{item.c}}"
+      loop:
+         - {a: maven,b: present,c: yes}
+         - {a: git,b: present,c: no}
+...           

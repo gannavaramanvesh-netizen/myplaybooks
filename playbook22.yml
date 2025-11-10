@@ -1,0 +1,27 @@
+---
+- name: install tree software,create user,copy files
+  hosts: all
+  vars: 
+   a: tree
+   b: present
+   c: yes
+  tasks:
+    - name: install tree software
+      apt:
+        name: "{{a}}"
+        state: "{{b}}"
+        update_cache: "{{c}}"
+      tags:
+        - tree_installation
+        - always
+    - name: create user
+      user: 
+       name: ravi
+       password: 667
+       home: /tmp/ravi
+      tags: user_creation
+    - name: copy 
+      copy:
+        src: /etc/passwd
+        dest: /tmp/ravi
+...
